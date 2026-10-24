@@ -1,0 +1,957 @@
+ProjectID,RequirementText,Label
+1,The MapComponent shall support different types of map layers (e.g.  terrain  satellite),F
+1,The MissionPlanner shall execute flight plans for multiple UAVs concurrently.,F
+1,The GCS shall transmit the UAV's properties to the GCSMiddleware,F
+1,The GCS shall transmit the UAV's current location to the GCSMiddleware,F
+1,The GCS shall report newly connected UAVs to the GCSMiddleware.,F
+1,The GCS shall assign a message frequency for all UAVs.,F
+1,When the GCS receives a UAV command from the GCSMiddleware  the GCS shall forward the command to the respective UAV.,F
+1,When the connection to the GCS from the GCSMiddleware is lost  the GCSMiddleware shall notify Dronology and deactivate all associated UAVs.,F
+1,The GCSMiddleware shall forward commands sent from Dronology to a GCS,F
+1,The GCSMiddleware shall handle state messages   monitoring messages  and mode change messages  received from an GCS.,F
+1,The GCSMiddleware  shall follow a predefined set of steps to establish a connection between a GCS and Dronology,F
+1,The GCSMiddleware shall handle multiple GCS,F
+1,The DronologyRuntimeMonitor shall be able to receive messages from any Dronology component,F
+1,When a new monitoring message is received the DronologyRuntimeMonitor shall forward the message to all subscribed clients,F
+1,The DronologyRuntimeMonitor shall provide functionality to retrieve monitoring messages and distribute them to clients,F
+1,The RealTimeFlightUI shall notify users when an emergency occurs.,F
+1,The RealTimeFlightUI shall allow users to follow one or multiple UAVs on the map.,F
+1,The RealTimeFlightUI shall allow users to perform emergency operations (e.g. hovering multiple UAVs  sending multiple UAVs to home) to a group of UAVs,F
+1,The RealTimeFlightUI shall allow users to apply flight operations to one or more selected UAVs.,F
+1,The RealTimeFlightUI shall display all currently active flight plans on the map.,F
+1,The RealTimeFlightUI shall display the name and status of all currently activated UAVs,F
+1,When the RouteCreationUI is loaded a list of all existing routes shall be displayed.,F
+1,The RouteCreationUI shall allow a user to delete a route.,F
+1,The RouteCreationUI shall allow the user to create and modify a route.,F
+1,When requested  the RouteCreationUI shall send a newly created or modified route to dronology.,F
+1,Each route shall include a unique ID  a textual description  and a set of waypoints  all of which are editable in the UI.,F
+1,The RouteCreationUI shall only accept valid altitude and speed values for waypoint.,F
+1,The RouteCreationUI shall distinguish between starting  ending  and intermediate waypoint markers.,F
+1,When a user  cancels a pending flight plan the RouteAssignmentUI shall notify Dronology.,F
+1,A user may reorder routes or remove flight plans assigned to a UAV as long as the flight has not started execution.,F
+1,When a UAV is selected  the RouteAssignmentUI shall display its active flight plans.,F
+1,When requested by the user  the RouteAssignmentUI shall display details about the selected UAV and its flight plans.,F
+1,When a route is assigned or removed from a UAV  the RouteAssignmentUI shall notify Dronology.,F
+1,The RouteAssignmentUI shall provide means to select an existing routes and assign them to a UAV.,F
+1,When loading the map view it shall be positioned at the pre-defined location,F
+1,When the VaadinUI is activated  the VaadinUI shall be configured according to stored configuration parameters.,F
+1,The UIMiddleware shall accept and activate a mission plan upon request.,F
+1,The UIMiddleware shall enable an existing route to be assigned to an active UAV.,F
+1,The UIMiddleware shall enable the creation and modification of flight routes,F
+1,The UIMiddleware accepts commands from UIs and forwards to Dronology,F
+1,The UIMiddleware shall provide a list of all existing routes,F
+1,The UIMiddleware shall provide a list of all active UAVs,F
+1,The ActivityLogger shall log all commands sent to and messages received from a CGS.,F
+1,The ActivityLogger shall log all flight plan related events.,F
+1,The InternalSimulator shall approximate the state of the battery,F
+1,When given a landing command the InternalSimulator shall move the UAV from to the ground altitude corresponding to its current longitude and latitude.,F
+1,When given a goto command  the InternalSimulator shall update the location of the UAV at increments of {{SIMULATIONSTEPSIZE}} meters  moving it towards the target destination until the destination is reached.,F
+1,When given a takeoff command the InternalSimulator shall move the UAV to the takeoff altitude corresponding to its current longitude and latitude.,F
+1,The InternalSimulator shall approximate the behavior of a UAV.,F
+1,The UAVRegistrationManager shall store UAV meta-data information  such as the UAV's technical characteristics,F
+1,When the maximum numbers of allowed activated UAVs has been reached  the UAVActivationManager shall reject any further activation requests.,F
+1,When a UAV is deactivated the UAVActivationManager shall cancel all current and scheduled flight plans,F
+1,The VehicleCore shall support virtual UAVs,F
+1,The VehicleCore shall support UAVs connected via the GCS,F
+1,When a group of UAVs are assigned flight patterns as part of a mission  the system shall provide a warning if any paths overlap.,F
+1,If requested  the SingleUAVFlightPlanScheduler shall abort the currently executing flight plan of an UAV,F
+1,If a UAV does not have any pending flight plans  then when it reaches the final waypoint of its current flight plan  the SingleUAVFlightPlanScheduler shall notify the UAV to hover in place.,F
+1,If a scheduled flight is not manually assigned to a UAV  the SingleUAVFlightPlanScheduler shall assign the route automatically to an UAV,F
+1,If a route contains a specific {{UAVID}}  the SingleUAVFlightPlanScheduler shall assign the route to the given UAV.,F
+1,When requested  the SingleUAVFlightPlanScheduler shall schedule a route for execution.,F
+1,When requested  if a mission is currently active  the MissionPlanner shall cancel the active mission.,F
+1,The MissionPlanner shall manage predefined FlightPatterns,F
+1,When a flight plan is activated for a UAV currently on the ground  the FlightSchedulingandExecution shall notify the UAV to takeoff vertically until it reaches the prescribed altitude.,F
+1,If a flight plan is active and the hover in place command is rescinded  the FlightManager shall notify the UAV to continue to the originally designated waypoint.,F
+1,If a flight route is assigned to a UAV which is currently hovering in place  the FlightManager shall assign the route and maintain the hover in place mode.,F
+1,When the hover in place command is issued  the FlightManager shall halt the UAV in place and maintain its current position.,F
+1,When given two coordinates the CoordinateSystem shall compute the direction from the first coordinate to the second coordinate.,F
+1,When given two coordinates the CoordinateSystem shall compute the distance between them.,F
+1,When requested  the CoordinateSystem shall transform coordinates to alternate formats.,F
+1,When a flight route requires a customized takeoff altitude that differs from the system's default takeoff altitude  it shall be specified in the flight route.,F
+1,The FlightRouteManager shall persist flight routes.,F
+1,The FlightRouteManager shall ensure that all flight routes represent a {{VALIDFLIGHTROUTE}}.,NF
+1,When the return to home command is issued  the FlightManager shall return the UAV to its original launch location without issuing any additional waypoint or routing commands.,F
+1,When the GCS loses the connection to an UAV  the GCS shall attempt to reconnect,F
+1,The UAVActivationManager shall only activate UAVs that are registered.,NF
+1,When a GCS requests activation of a newly detected UAV  the GCSMiddleware shall forward the request to Dronology.,F
+1,When a UAV has an active onboard Obstacle Avoidance  then the ObstacleAvoidance system shall not issue directives,F
+1,The ObjectAvoidance system only issues commands within the capabilities of the UAV,F
+1,If a UAV takes evasive actions the system will ensure that it will eventually reach its destination,F
+1,When a stationary or moving object is within the proximity of a UAV the ObjectAvoidance system shall issue evasive directives to the UAV,F
+1,The RealTimeFlightUI shall display the location of active UAVs as icons on the map.,F
+1,When the RealTimeFlightUI is loaded  a map shall be displayed.,F
+1,If a command is issued by the VaadinUI for an UAV  the VaadinUI shall request control of that UAV.,F
+1,The UIMiddleware shall only assign one control-client at a time for each UAV.,F
+1,The UIMiddleware shall provide an interface for registering UI clients.,F
+1,When a UAV's current flight is cancelled  the SingleUAVFlightPlanScheduler shall in turn cancel all scheduled flight plans for that UAV.,F
+1,If a UAV has pending flight plans  then when it reaches the final waypoint of its current flight plan  the SingleUAVFlightPlanScheduler shall execute the next assigned flight plan.,F
+1,If requested  the SingleUAVFlightPlanScheduler shall unassign the flight plan assigned to a UAV that is awaiting execution.,F
+1,The SingleUAVFlightPlanScheduler shall maintain a managed list of pending flight plans for Each UAV.,F
+1,When a flight plan is executed  the VehicleCore shall send the next waypoint to the UAV.,F
+1,Each waypoint shall be specified using coordinates that include longitude  latitude  and altitude.,NF
+1,The VehicleCore shall associate a {{UAVTYPE}} for each UAV defining its basic attributes.,F
+1,The UAVActivationManager shall ensure that only one instance of each registered drone is active at any time.,F
+1,The SingleUAVFlightPlanScheduler shall only execute one flight plan at a time for each UAV.,F
+1,The VehicleCore shall assign a unique ID to each activated UAV.,F
+1,If a client registers for notifications  the UIMiddleware shall send notifications for specific events,F
+1,When requested  the VehicleCore shall shall transition the UAV between states according to allowed state transitions as depicted in the UAV state transition diagram,F
+2,The system must offer customisable metadata schema.,NF
+2,The system must offer customisable workflow to import or create metadata and upload associated files and support multiple ingest protocols e.g. SWORD2,F
+2,The system must support association of single or multiple files with one metadata record.,F
+2,"The system must ingest and store metadata at a data object level, where a data object is a folder that contains one or more files",F
+2,The system must support multiple files types including multimedia.,NF
+2,"The system should have a simple process for ingesting large (multi-TB) data sets, potentially consisting of thousands of files.",NF
+2,"The system must support controlled lists against some metadata fields, either held locally or drawn from an external source e.g. Subject vocabularies",NF
+2,"The system should support customisation of out of the box help text and provide context sensitive feedback for the depositor e.g. Highlight missing metadata fields, file upload failure alert.",F
+2,The system must support staged deposit workflow including an administrative area for quality checking prior to data publication.,F
+2,"The system must enable selective harvesting of metadata, including support for OAI-PMH sets; offer API functionality to re-users, conforming to open standards.",F
+2,The system must enable extraction of metadata and data in an open format e.g. to enable migration to another repository platform.,F
+2,The system must support current open standards and support exposure of metadata in different ways.,NF
+2,The system should support different types of relationship within and between data sets e.g. IsVersionOf; Is Part Of; References etc. and support navigation between related datasets.,F
+2,The system should support additional depositor generated and re-user generated metadata.,F
+2,"The system should support customisation of out of the box help text and provide context sensitive feedback for the re-user to support search, navigation and re-use.",NF
+2,The system must support multiple content licensing options with terms and conditions exposed clearly to human and machine re-users; support default licence setting (minimum CC licences plus others).,NF
+2,The system should enable implementation of third party preservation tools such as DROID and JHOVE.,NF
+2,The system should auto-generate preservation metadata.,F
+2,The system must support versioning of datasets including clear indication of the latest version.,F
+2,"The system should display file size, format and software application and version for re-users",F
+2,The system must support technical metadata related to specific files or datasets.,F
+2,The system could generate a suggested data citation format / allow depositors to specify data citation format.,F
+2,The system must support generation of persistent unique identifiers for datasets including DOIs.,F
+2,The system could select multiple objects and save for download (shopping basket).,F
+2,The system could visualise and process data within the repository system.,F
+2,"The system should unpack a range of file archive formats (e.g. Zip, tar, gz, bz) to allow navigation through the archive folder structure and selective download",F
+2,The system could support optional end user alerts e.g.to be notified of data change or new versions.,F
+2,The system must enable depositor and repository manager to specify granular access rights to the deposited data files at collection and data object level.,F
+2,The system should enable depositor and repository manager to specify granular access rights to the deposited data files at individual file level.,F
+2,"The system must support embargo options for metadata and/or associated files at collection, data object and file level.",F
+2,"The system must support open methods of authentication e.g. Shibboleth, OAuth, OpenID",NF
+2,The system must enable immediate access to and download of datasets where available,F
+2,The system must support access to very large data sets (over 1 TB or comprising more than 1000 files).,NF
+2,The system must support access to data sets which may be stored outside the repository e.g. In cloud based storage.,NF
+2,The system must support access to data sets which may be stored in other national or international repositories.,NF
+2,"The system must remove data from public view to an access controlled area, a dark archive or full deletion, generating a tombstone reference in the public display which can itself be moved to an access controlled area, a dark archive or deleted.",F
+2,The system must support permanent data destruction to meet any legal or ethical requirements.,F
+2,"The system must manage granular access to data and its associated metadata, including data held securely in a dark archive.",NF
+2,The system must offer effective search and discovery mechanism including a variety of browse options and keyword searching,F
+2,"The system must generate a variety of reports analysing repository content, including records associated with an academic unit, a funder, grant number, data creator and analysis of data by format, file size and embargo and access conditions.",F
+2,The system must hold funder and grant metadata associated with one or more repository records.,F
+2,The system must be OpenAire compliant out of the box or with simple customisation.,NF
+2,The system should support reporting by funder to confirm a particular funder's open access data / deposit requirement has been met.,F
+2,The system should generate reports on repository content growth pattern over time.,F
+2,The system should support preservation function by generating reports on repository content.,F
+2,"The system should generate reports on the number and origins of repository end users, including by domain type and geographical location.",F
+2,"The system must report on number and speed of data downloads and log number of data requests. Reports should be possible over specified periods of time and against specified subsets of the repository (by Funder, by Creator, by academic unit).",F
+2,"The system must integrate with multiple file systems (archive file appliance, object store etc.)",NF
+2,The system must allow creation of repository roles with different editing rights.,F
+2,The system must allow specification of mandatory metadata fields.,F
+2,The system should retain history of changes to metadata fields,F
+2,The system must possess a field for multiple data owners over time (previous owners should not be overwritten).,F
+2,"The system must import or harvest metadata and associated files from a variety of sources using established standards such as OAI-PMH, OAI-ORE.",F
+2,"The system must harvest / ingest / import metadata from other systems e.g. funder, grant number, equipment, author identifier, project code.",F
+2,"The system should be able to support externally managed unique entities e.g. identifiers such as ORCID, ResearcherID",F
+2,The system could display linked data from other systems using open standards.,F
+2,"The system must link to associated research outputs, potentially in other systems e.g. Published papers.",F
+2,"The system could supply data to research management systems (for example, to enable reporting against the percentage of projects with data associated, analysable by Funder and academic unit).",F
+2,The system could import and display impact measures such as citation data from external sources e.g. Thomson Reuters Data Citation Index and track alt-metrics such as links and likes.,F
+2,The system should be compliant with the OAIS reference model.,NF
+2,The system must have all aspects of the user interface(s) customisable by UoL,NF
+2,The out-of-the-box user interface shall be intuitive to users,NF
+2,The out-of-the-box user interface shall meet W3C WCAG 1.0 accessibility requirements.,NF
+2,"The system should be able to support rapid prototyping, so proof of concept work can be carried out quickly and easily.",NF
+2,The system should support a range of server operating systems,NF
+2,The system must work with an Active Directory forest containing two domains,NF
+2,The system should run in a clustered server environment in an active-passive configuration,NF
+2,The system could run in a clustered server environment in an active-active configuration,NF
+2,The system must support the University of Leeds central backup infrastructure,NF
+2,Routine patching of the system shall be possible with minimal (i.e. less than 5 minutes) downtime.,NF
+2,Routine patching of the system shall be possible with no more than 1 hours downtime,NF
+2,"Is shall be possible to run multiple instances of the software for purposes such as QA, development / testing and training e.g. in a virtualised environment",NF
+2,"The system must support the latest public release of the chosen operating systems, provided the release date was at least 6 months ago. Mitigate risk of version misalignment.",NF
+2,The system must support the previous two major public releases of the chosen operating system,NF
+2,"The system must be able to connect to a range of storage systems, including the front end storage appliance to an off-site data archive.",NF
+2,"The system should provide an appropriate method of ensuring the integrity of datasets, such as checksums",NF
+2,The software codebase must be managed using recognised source control system.,NF
+2,The system should be able to deal with non-Roman scripts and special characters (e.g. those covered in the Unicode v6.2 specification),NF
+2,"There should be detailed documentation available covering the technical architecture of the software, showing the interrelationships between the various software components and supporting services (e.g. web server, database etc.)",NF
+2,"There must be detailed documentation available covering the processes required to install, patch and upgrade the software.",NF
+2,There must be detailed documentation available covering the backup and restore of both the configuration of the system and the data held within it.,NF
+2,The system must adhere to the standards as specified in the University's Information Security Policy,NF
+2,The system must adhere to the University's Access Control Policy,NF
+2,The system must adhere to the standards as specified in the University's Security Logging Policy,NF
+2,The system must adhere to the standards as specified in the University's Vulnerability and Penetration Testing Policy,NF
+3,'The system shall refresh the display every 60 seconds.',NF
+3,'The application shall match the color of the schema set forth by Department of Homeland Security',NF
+3,'If projected the data must be readable. On a 10x10 projection screen 90% of viewers must be able to read Event / Activity data from a viewing distance of 30',NF
+3,'The product shall be available during normal business hours. As long as the user has access to the client PC the system will be available 99% of the time during the first six months of operation.',NF
+3,'If projected the data must be understandable. On a 10x10 projection screen 90% of viewers must be able to determine that Events or Activities are occuring in current time from a viewing distance of 100',NF
+3,'The product shall ensure that it can only be accessed by authorized users. The product will be able to distinguish between authorized and unauthorized users in all access attempts',NF
+3,'The product shall be intuitive and self-explanatory. : 90% of new users shall be able to start the display of Events or Activities within 90 minutes of using the product.',NF
+3,'The product shall respond fast to keep up-to-date data in the display.',NF
+3,'The system shall have a MDI form that allows for the viewing of the graph and the data table.',F
+3,'The system shall display Events in a vertical table by time.',F
+3,'The system shall display the Events in a graph by time.',F
+3,'The system shall display Events or Activities.',F
+3,'The display shall have two regions: left 2/3 of the display is graphical right 1/3 of the display is a data table',F
+3,'The data displayed in both the nodes within the graph and the rows in the table are MSEL Summary data',F
+3,'The table side of the display shall be split into 2 regions: sequential and temporal.',F
+3,'The top 1/4 of the table will hold events that are to occur sequentially.',F
+3,'The bottom 3/4 of the table will hold events that occur according to its relevance to current time.',F
+3,'The system shall color code events according to their variance from current time.',F
+3,'The system shall display data from the Sync Matrix 1.0 and Exercise Management Tool 1.0 applications',F
+3,'The system shall link Events back to either the Sync Matrix 1.0 or the Exercise Managment Tool 1.0 applications for modifications.',F
+3,'The system shall allow modification of the display.',F
+3,'The system shall offer a display of all the Events in the exercise.',F
+3,'The system shall filter data by: Venues and Key Events.',F
+3,'The system shall allow a user to define the time segments',F
+3,'The system shall display the local and exercise time in separate clocks',F
+3,'The system shall offer the ability to pause and resume the refresh of data.',F
+3,'The system shall provide charts for the Activity or Event actual versus assumed time.',F
+3,'The system shall provide a history report of changes made to the Activity or Event data',F
+4,'The look and feel of the system shall conform to the user interface standards of the smart device.',NF
+4,'The user interface shall have standard menus buttons for navigation',NF
+4,'The system shall have a professional appearance',NF
+4,'The product shall have a consistent color scheme and fonts.',NF
+4,'The system shall be used by realtors with no training.',NF
+4,'The system shall be intuitive and self explanatory.',NF
+4,'The product shall be easy for a realtor to learn.',NF
+4,'The product shall use symbols and words that are naturally understandable by the realtor community.',NF
+4,'The product shall produce search results in an acceptable time',NF
+4,'The search results shall be returned no later 30 seconds after the user has entered the search criteria',NF
+4,'The product shall generate a CMA report in an acceptable time.',NF
+4,'The CMA report shall be returned no later 60 seconds after the user has entered the CMA report criteria.',NF
+4,'The product shall synchronize contacts and appointments in an acceptable time.',NF
+4,'The product shall synchronize with the office system every hour.',NF
+4,'The product shall be available for use 24 hours per day 365 days per year',NF
+4,'Out of 1000 accesses to the system the system is available 999 times.',NF
+4,'The product shall operate in offline mode whenever internet connection is unavailable.',NF
+4,'The product shall allow the user to view previously downloaded search results CMA reports and appointments.',NF
+4,'The product shall retain user preferences in the event of a failure.',NF
+4,'100% of saved user preferences shall be restored when system comes back online.',NF
+4,'The product shall be able to support multiple remote users',NF
+4,'The product shall be able support 1000 simultaneous users.',NF
+4,'The product shall be capable of handling the existing 1000 users. This number is expected to grow 5 times within the next year.',NF
+4,'The product shall be installed by an untrained realtor without recourse to separately-printed instructions.',NF
+4,'90% of untrained realtors shall be able to install the product on their device without printed instructions',NF
+4,'The product is expected to run on Windows CE and Palm operating systems.',NF
+4,'Only registered realtors shall be able to access the system.',NF
+4,'Every user of the system shall be authenticated and authorized.',NF
+4,'The product shall prevent its data from incorrect data being introduced.',NF
+4,'The system shall allow a real estate agent to query MLS information',F
+4,'The user shall be able to get driving directions to a selected property',F
+4,'The user shall be able to download appointments and contact information for clients',F
+4,'The system shall display clear property images in the search results',F
+4,'The system shall update or create new property listings in the MLS',F
+4,'Realtor shall be able to generate a CMA report based on property criteria',F
+4,'The system shall be able to call the seller or buyer to schedule an appointment',F
+4,'The realtor shall be notified of new client appointments after automatic synchronization with office system',F
+4,'The realtor shall be able to retrieve a map showing property locations for a specified area',F
+4,'The system shall notify the realtor when a seller or buyer responds to an appointment request',F
+4,'The product shall allow the user to save the property search results.',F
+5,'The system shall be easy to use by the Program Administrators/Nursing Staff Members.',NF
+5,'All of the users shall be able to use the system after one day of training.',NF
+5,'The system shall help the user avoid making mistakes while scheduling classes and clinicals for the nursing students.',NF
+5,'The number of mistakes noted by the students shall be decreased by 50% in the first year.',NF
+5,'The system shall be intuitive to the Program Administrators/Nursing Staff Members.',NF
+5,'2 out of 3 Program Administrators/Nursing Staff Members shall successfully be able to use the system to manage the scheduling of classes and clinicals.',NF
+5,'The system shall use symbols and words that are naturally understandable by the user community.',NF
+5,'The verbiage used within the system shall be consistent with Standard English and the terminology of the national Nursing Community.',NF
+5,'Staff members shall be able to complete a set of tasks in a timely manner.',NF
+5,'The response time of general student management tasks shall take no longer than 5 seconds and the response time of schedule generation shall take no longer than 30 seconds.',NF
+5,'The system shall be available for use between the hours of 8am and 6pm.',NF
+5,'The system shall achieve 95% up time.',NF
+5,'system shall be able to handle all of the user requests/usage during business hours.',NF
+5,'The system shall cater to 10 simultaneous users from 9am to 5pm.',NF
+5,'The system shall be capable of processing 100% of nursing students and their classes for the next 10 years.',NF
+5,'The system shall be expected to manage the nursing program curriculum and class/clinical scheduling for a minimum of 5 years.',NF
+5,'The system shall able to operate within a business office environment typical of the Nursing Department at DePaul University.',NF
+5,'The system shall be used within the specifications defined by the computers used by the Program Administrators/Nursing Staff Members.',NF
+5,'The system shall operate within the Windows XP Professional operating system.',NF
+5,'The system shall interface with CampusConnect’s central server',NF
+5,'The system shall interface with the faculty central server.',NF
+5,'The system shall interface with the student master server.',NF
+5,'We must be able to interface with any HTML browser.',NF
+5,'Only authorized users shall have access to clinical site information.',NF
+5,'Program Administrators/Nursing Staff Members are the only people who shall have access to clinical site details.',NF
+5,'Only authorized users shall have access to students’ personal information.',NF
+5,'Dr Susan Poslusny and Dr Julie Donalek are the only people who shall have access to students’ personal information.',NF
+5,'Only authorized users shall have access to the portion of the system that interfaces with CampusConnect.',NF
+5,'Fit Criterion: Dr Susan Poslusny and Karen Sysol are the only people who shall have access to the final class section scheduling for the system that interfaces with CampusConnect.',NF
+5,'The system shall have basic data integrity checking to reduce the possibility of incorrect or invalid data being introduced.',NF
+5,'The system shall protect private information in accordance with the organization’s information policy.',NF
+5,'The system shall be built such that it is as secure as possible from malicious interference.',NF
+5,'The system shall use the organization’s standard virus protection software to help monitor threats to itself.',NF
+5,'A cohort shall be associated to one Program of Study offered by the department.',F
+5,'Program Administrators and Nursing Staff Members shall be able to add a listing of students to a cohort.',F
+5,'Program Administrators and Nursing Staff Members shall be able to add a single student to a cohort',F
+5,'Students added to a cohort shall be eligible for the cohort’s Program of Study.',F
+5,'Program Administrators and Nursing Staff Members shall be able to specify the preferred sequence of classes for a given cohort.',F
+5,'For each class within a sequence for a cohort Program Administrators and Nursing Staff Members shall be able to specify which quarter that class will be offered.',F
+5,'For each class within a sequence for a cohort Program Administrators and Nursing Staff Members shall be able to specify which quarter that class will be offered.',F
+5,'Program Administrators and Nursing Staff Members shall be able to add new classes to a sequence of classes',F
+5,'Program Administrators and Nursing Staff Members shall be able to add clinical classes or sections to a sequence of classes',F
+5,'Program Administrators and Nursing Staff Members shall be able to add a new cohort to the system identified by start month and year.',F
+5,'Program Administrators and Nursing Staff Members shall be able to add new classes for the nursing department into the system.',F
+5,'A class shall be either a non-clinical class or a clinical class.',F
+5,'A non-clinical class shall specify the course name lecture room requirements and instructor needs.',F
+5,'A clinical class shall specify the course name lecture room requirements clinical site needs lecture instructor needs and clinical lab instructor needs.',F
+5,'Program Administrators/Nursing Staff Members shall be able to create a new Program of Study.',F
+5,'A Program of Study shall consist of a program name and listing of required classes (both clinical and non-clinical) that must be completed.',F
+5,'Program Administrators and Nursing Staff Members shall have the ability to specify which classes are required for a Program of Study',F
+5,'The system shall be able to display a report of needed classes for a given quarter for all cohorts of all programs for Program Administrators/Nursing Staff Members’ planning purposes.',F
+5,'The report of needed classes shall include (but not be limited to) classes to be offered number of sections needed number of labs needed and room types needed.',F
+5,'Classes for a given cohort shall not conflict with regards to the time and day that they are offered.',F
+5,'Program Administrators and Nursing Staff Members shall be able to add a new clinical site into the system.',F
+5,'Clinical site information shall include (but not be limited to) the name of the site contact person and contact information.',F
+5,'Program Administrators and Nursing Staff Members shall be able to add a new clinical lab section for an existing clinical class into the System.',F
+5,'A clinical lab section shall include the clinical site name the class instructor day and time of the lab.',F
+5,'Program Administrators and Nursing Staff Members shall be able to add a student who has registered for a clinical class to a clinical lab section for that class.',F
+5,'The system shall allow a Program Administrator or Nursing staff member to remove a student from a clinical lab section.',F
+5,'The system shall allow a Program Administrator/Nursing Staff Member to move a student from one clinical lab section to another clinical lab section corresponding to the same clinical class.',F
+5,'Program Administrators/Nursing Staff Members shall be able to cancel a clinical lab section only if there are no students registered for that clinical lab section.',F
+5,'A Program Administrator/Nursing Staff Member shall be able to add a new nursing student to the system.',F
+5,'A staff member shall have the ability to manage the progress of a part time student which includes modifying their sequence of classes and timeline of classes.',F
+5,'The system shall be able to display a printable summary for individual cohorts which will include the students enlisted the Program of study sequence of classes cohort progress through the program and timeline of completion.',F
+5,'The system shall be able to display a printable summary for individual clinical sites which will include information on labs being held at that site for the given quarter (Clinical site general information on labs held at that location dates and times of all labs held there).',F
+5,'The system shall be able to display a printable summary for individual clinical labs which will include (but not be limited to) class name class number lab section listing of students enrolled instructor day(s) time and location.',F
+5,'The system shall be able to display a printable summary for individual nursing students which will include (but not be limited to) student name student ID admission date classes credits GPA and the cohort that the student is enrolled in.',F
+5,'The system shall be able to display a printable summary of the system log.',F
+5,'The system shall contain contact information (e-mail and phone number) for all people relevant to the system including (but not limited to) staff members students lecture instructors clinical lab instructors and clinical site administrators.',F
+5,'The system will use the stored e-mail addresses as a primary means of communicating information to affected parties.',F
+5,'The system will notify affected parties for routine communication purposes including but not limited to informing students of upcoming offered classes (timeline) and what their schedule will be/shall be.',F
+5,'The system will notify affected parties when changes occur affecting clinicals including but not limited to clinical section capacity changes and clinical section cancellations.',F
+5,'The system will notify affected parties when changes occur affecting classes including but not limited to class cancellations class section detail changes and changes to class offerings for a given quarter.',F
+5,'The system will notify affected parties when changes occur affecting cohorts including but not limited to changes to the sequence for a cohort’s program of study and changes to a given week’s schedule (lab cancelled this week due to instructor illness).',F
+5,'The system will notify affected parties when changes occur affecting specific students including but not limited to changing a student’s status from full time to part time and moving a student to a different clinical section.',F
+5,'Program Administrators/Nursing Staff Members shall have the ability to modify information relating to cohorts including cohort identifier program of study preferred sequence of classes and quarters that a cohort will be taking specific classes.',F
+5,'Program Administrators/Nursing Staff Members shall have the ability to modify information relating to a Program of Study within the Nursing Department including the Program of study name and required classes for that Program of Study.',F
+5,'Program Administrators/Nursing Staff Members shall have the ability to modify information relating to a Clinical Site including the clinical site name site contact person contact information and address.',F
+5,'Program Administrators/Nursing Staff Members shall have the ability to modify information relating to a Clinical Lab Section including the clinical site name the department/section for the lab the class instructor day and time of lab and contact information.',F
+5,'Program Administrators/Nursing Staff Members shall have the ability to modify information relating to a Nursing Student including student ID student name phone number e-mail status (full time or part time) and program of study.',F
+6,'The Disputes application shall comply with the corporate standards for user interface creation for internally and externally used applications.',NF
+6,'All screens created as part of the Disputes application must comply with corporate standards for interface creation.',NF
+6,'The list of dispute cases that are displayed after a search is performed must be color coded for easy identification of dispute cases based upon the dispute case status.',NF
+6,'100% of the cardmember and merchant services representatives shall use the Disputes application regularly after a 2-day training course.',NF
+6,'100% of cardmember services representatives shall be able to successfully create a dispute case on the first encounter after completing the training course.',NF
+6,'100% of merchant services representatives shall be able to successfully perform a follow up action on a dispute case on the first encounter after completing the training course.',NF
+6,'The maximum wait time for a user navigating from one screen to another within the Disputes application shall be no more than 5 seconds.',NF
+6,'The Disputes application shall support 350 concurrent users without any degradation of performance in the application.',NF
+6,'The Disputes application shall be available 24x7x365 with the exception of the following scheduled maintenance windows. Monday – Saturday 3:00am to 4:00am EST Sunday 1:00amd to 5:00am EST',NF
+6,'The Disputes application shall interface with the Statement Database. The Statement Database provides the transaction details to the Disputes System. All transaction details must be obtained from the Statement Database',NF
+6,'The Disputes application shall interface with the Cardmember Information Database. The Cardmember Information Database provides detailed information with regard to a cardmember. All cardmember detail information must be obtained from the Cardmember Information Database.',NF
+6,'The Disputes applications shall interface with the Merchant Information Database. The Merchant Information Database provides detailed information with regard to the merchant. All merchant detail information shall be obtained from the Merchant Information Database.',NF
+6,'The Disputes application shall interface with the Letters application. This will allow the Disputes application to request letters as part of the dispute initiation and dispute follow up process. All letter requests must be sent to the Print Letter Utility application.',NF
+6,'The Disputes application shall interface with the Cardmember Posting and Billing System. This will allow the Disputes application to request adjustments to cardmember and merchant’s accounts. All adjustment requests must be sent to the Cardmember Posting and Billing System.',NF
+6,'The Disputes application shall ensure that only users with the appropriate access level are allowed to initiate dispute requests.',NF
+6,'Only users with Update access must be able to initiate dispute requests.',NF
+6,'The Disputes application shall ensure that only authorized users are allowed to logon to the application.',NF
+6,'All authorized users once authenticated must be able to logon to the Disputes System',NF
+6,'The Disputes System shall generate a User Report that details any new users that have been added and any changes to an existing user’s access level. The report will be reviewed for auditing purposes.',NF
+6,'All additions of new users and modifications to user’s access shall be recorded on the User Report.',NF
+6,'If a user account is revoked it can only be re-instantiated by the System Administrator.',NF
+6,'Only the System Administrator shall be able to reset a revoked user logon account',NF
+6,'The Disputes application shall manipulate and view business data. Users will not have direct access to data files or databases.',NF
+6,'All updates to data files or database must be initiated from the Disputes System.',NF
+6,'The Disputes application must conform to the legal requirements as specified by the Merchant Operating Regulations.',NF
+6,'All business rules specified in the Disputes System shall be in compliance with the Merchant Operating Regulations.',NF
+6,'The Disputes application must conform to the legal requirements as specified by Regulation E and Regulation Z that govern credit card disputes processing.',NF
+6,'All business rules specified in the Disputes System shall be in compliance to the guidelines of Regulation E and Regulation Z.',NF
+6,'The Disputes application must maintain a detailed history of every action that a user takes on a dispute case. This ensures a complete audit trail if questions arise later on with regard to a particular dispute case.',NF
+6,'All actions that modify an existing dispute case must be recorded in the case history.',NF
+6,'The Disputes System must be accessible by both internal and external users.',F
+6,'The Disputes System must prevent users from accessing any dispute cases that do not belong to their cardholder base.',F
+6,'The Disputes System will facilitate direct data entry of a dispute case via a user interface that supports real time responses to the users.',F
+6,'The Disputes System must provide different levels of access with regard to disputes case initiation and follow-up actions.',F
+6,'The Disputes System shall provide view access capability for authorized users of the application.',F
+6,'The Disputes System shall provide update access capability for authorized users of the application.',F
+6,'The Disputes System must allow the users to select disputable transactions (based on the age of the transaction) from a user interface and initiate a dispute (ticket retrieval request or chargeback notification) on the selected transaction.',F
+6,'The Disputes System must provide the user the ability to initiate a single dispute case on multiple transactions that belong to a single merchant.',F
+6,'The Disputes System will provide the user the ability to create or initiate a ticket retrieval request. As part of ticket retrieval creation process the system must prompt the user to enter all the required information to create the ticket retrieval request. The ticket retrieval request is a document that is sent to merchant inquiring the validity of a transaction.',F
+6,'The Disputes System must allow the user to create three unique types of ticket retrieval requests. The three types of ticket retrieval requests are (1) Request for original receipt (2) Request for a copy of the receipt or (3) Request for a portfolio. A portfolio consists of documentation that would provide proof of a purchase such as the documentation that is received from a car rental agency that is more than a sales receipt.',F
+6,'The Disputes System must prevent external users from requesting original receipts. Requests for original receipts are restricted to internal users.',F
+6,'The Disputes System must provide a confirmation to the user upon the creation of ticket retrieval request that contains the following information; the dispute case number the type of retrieval requested (copy original or portfolio) and the date that the merchant response is due.',F
+6,'The Disputes System shall allow the user to create or initiate a chargeback request. The system must prompt the user to enter the required information to initiate a chargeback request. The chargeback request results in a printed chargeback notification that is sent to merchant indicating that their account will be charged back if no proof is provided that the disputed transaction is valid.',F
+6,'The Disputes System must provide a confirmation to the user upon the creation of a chargeback request. The confirmation must contain the following information; the dispute case number the type of chargeback requested (pending or immediate) and the date that the merchant response is due.',F
+6,'The Disputes System shall prevent the creation of duplicate dispute requests 100% of the time.',F
+6,'The Disputes System shall accurately provide a list of possible reason codes for a given transaction. The list of possible reason codes must be derived based on the type of transaction and the industry that the merchant belongs to according to the business rules defined for the Disputes System.',F
+6,'The Disputes System must provide the ability to view existing dispute cases.',F
+6,'The Disputes System must provide Search functionality. The search method must include the ability to search by (1) the dispute case number (2) the merchant account number (3) the cardmember account number and (4) the issuer number. In addition to the above criteria the search functionality must further allow the user to limit the results of the search by a date range the type of dispute (ticket retrieval request or chargeback notification) the case status (open closed or all) and the dispute reason code.',F
+6,'A list of all disputes cases that meet the entered search criteria must be provided to the user. The list of cases must differentiate the type and/or status of the case by color -coding the line item in the list. For example all open cases will be yellow and all closed cases will be gray.',F
+6,'The Disputes System shall provide the users the ability to view the history of all activities that have occurred on the dispute case.',F
+6,'The Dispute System shall provide the users with the ability to follow up on a dispute case via follow-up actions. The list of available follow up actions for a given dispute case must be filtered by the status of the case and the access level of the user.',F
+6,'The Disputes System shall record the name of the user and the date for any activity that creates or modifies the disputes case in the system. A detailed history of the actions taken on the case including the date and the user that performed the action must be maintained for auditing purposes.',F
+6,'For any systematic (non-user initiated) action that occurs on a case such as the disputes aging process a case activity will be generated. Upon the next logon the user that initiated the dispute case must be notified that a systematic action has occurred on the dispute case.',F
+6,'All letter requests must be formatted according to guidelines specified by the Print Letter Utility system.',F
+6,'Any disputes cases that have been closed for over 6 months must be purged from the online disputes database.',F
+7,'The product must support Internet Explorer 5.5 and above.',NF
+7,'The product must support Mozilla Firefox 1.0 and above.',NF
+7,'The product shall interface with the Choice Parts System. This provides the feed of recycled parts data.',NF
+7,'The product shall run on the existing hardware for all environments.',NF
+7,'The product shall adhere to the corporate Architecture guidelines',NF
+7,'The product shall comply with corporate User Interface Guidelines',NF
+7,'The product shall comply with corporate color scheme',NF
+7,'The appearance of the product shall appear professional',NF
+7,'The product shall be easy to use by Adjusters and Collision Estimators. 95% of Adjusters and Collision Estimators shall find the product easy to use.',NF
+7,'The product shall increase productivity of Collision Estimators. 80% of the Collision Estimators shall agree their productivity has increase within 1 month of using the product.',NF
+7,'Users shall feel satisfied using the product. 85% of all users will be satisfied with the product.',NF
+7,'The product shall be easy to learn by Adjusters and Collision Estimators. The product shall be learned with two days onsite training',NF
+7,'The user shall easily locate instructions while using the product. User help can be found within 90% of the system.',NF
+7,'The search for recycled parts shall take no longer than 15 seconds. The search results shall be returned in under 15 seconds.',NF
+7,'The search for the preferred repair facility shall take no longer than 8 seconds. The preferred repair facility is returned within 8 seconds',NF
+7,'The recycled parts audit report shall be returned to the user within 10 seconds. The audit report shall be returned within 10 seconds.',NF
+7,'The preferred repair facility ratings shall be saved within 5 seconds. The save shall occur within 5 seconds.',NF
+7,'The product shall adhere to the corporate online availability schedule. The application is brought down only within 98% of the scheduled outages per the availability schedule.',NF
+7,'The product shall achieve a 98% uptime. The product shall not fail more than 2% of the available online time.',NF
+7,'The product shall be able to handle up to 1500 simultaneous users. The system shall perform with 1500 users as a time.',NF
+7,'The average number of recycled parts records per day shall be 50 000.',NF
+7,'The product shall be able to handle 10 000 concurrent users within 2 years of the initial launch.',NF
+7,'For estimators the product shall be able to be operated in a repair facility during dirty and noisy conditions.',NF
+7,'The product shall interface with the ChoiceParts system once per day at approximately 1:00 AM.',NF
+7,'The maintenance of the product will fall within the established corporate maintenance windows.',NF
+7,'The product shall be supported using the corporate support center.',NF
+7,'Product installations and upgrades shall be handled by the middleware technology team within established launch time frames.',NF
+7,'Only adjusters can request recycled parts audit reports. No users without an adjuster role shall request recycled parts audits.',NF
+7,'Only adjusters with a supervisor role can update preferred repair facility ratings. Users without the supervisor role cannot access the repair facility ratings.',NF
+7,'Only collision estimators shall search for recycled parts. Users without the collision estimator role shall not have access to the search for recycled parts.',NF
+7,'Only valid data shall be entered into the system. No invalid data shall be entered into the system.',NF
+7,'One insurance company shall not be able to view another insurance companys claim data.',NF
+7,'The product shall free of computer viruses.',NF
+7,'The system shall prevent malicious attacks including denial of service.',NF
+7,'The product must comply with Sarbanes-Oxley.',NF
+7,'The product shall comply with the estimatics laws relating to recycled parts usage.',NF
+7,'The product shall comply with insurance regulations regarding claims processing.',NF
+7,'The user shall search for the preferred repair facility using vehicle vehicle location and radius in miles',F
+7,'The vehicle data shall include vehicle year make and model',F
+7,'The vehicle location shall include street address city state and zipcode',F
+7,'The system shall resolve the zipcode for the street address city and state if zipcode is unknown.',F
+7,'The search radius shall be between 1 and 30 miles',F
+7,'The system shall locate the preferred repair facility with the highest ratings for the input criteria',F
+7,'The adjuster shall enter the preferred repair facility on the estimate assignment.',F
+7,'The adjuster shall be able to override the preferred repair facitlity on the estimate assignment.',F
+7,'The preferred repair facility shall be returned to the user.',F
+7,'The system shall return a list of repair facilities within the radius if the preferred repair facility cannot be determined.',F
+7,'The estimator shall search for available recycled parts using damaged vehicle parts information.',F
+7,'The estimator shall search for available recycled parts using a list of preferred parts suppliers.',F
+7,'The system shall search for available recycled parts for the supplied vehicle parts and suppliers.',F
+7,'The estimator shall search by zipcode with a radius of 30 miles if no parts are found for the preferred parts suppliers',F
+7,'The system shall retain the available recycled parts and suppliers returned from the search.',F
+7,'The available recycled parts information and their suppliers shall be returned to the user.',F
+7,'The estimator shall apply selected recycled parts to the collision estimate.',F
+7,'The estimator shall not apply recycled parts to the collision estimate if no available parts are returned.',F
+7,'The adjuster shall review the collision estimate.',F
+7,'The adjuster shall request a recycled parts audit of the collision estimate.',F
+7,'The recycled parts search results provided to the estimator shall be retrieved by the system.',F
+7,'The system shall generate an audit report based on the available recycled parts and the collision estimate.',F
+7,'The audit report shall include the total number of recycled parts used in the estimate.',F
+7,'The audit report shall include the number of available recycled parts from the original search results.',F
+7,'The audit report shall include the percentage of available recycled parts used in the estimate ',F
+7,'The audit report shall include the total score of the audit which sums the indivual line items.',F
+7,'The audit report shall be displayed to the user.',F
+7,'The audit report shall be available to other adjusters at later points in time.',F
+7,'The user shall select to view the preferred repair facility ratings.',F
+7,'The current repair facility ratings shall be displayed to the user.',F
+7,'The system will display a blank set of ratings if there are not ratings yet defined.',F
+7,'The user shall enter new ratings based on the audit report',F
+7,'The ratings shall be from a scale of 1-10',F
+7,'The ratings shall include categories for attempted use of recycled parts and actual use of recycled parts',F
+7,'The user shall select to save the preferred repair facility ratings.',F
+7,'The preferred repair facility ratings shall be saved by the system.',F
+8,'The product must work with most database management systems (DBMS) on the market whether the DBMS is colocated with the product on the same machine or is located on a different machine on the computer network.',NF
+8,'The product will function alongside server software on any operating system where the Java runtime can be installed.',NF
+8,'The product will require collaboration with a database management system (DBMS). The DBMS may be located on the same machine as the product or on a separate machine residing on the same computer network.',NF
+8,'The product must make use of web/application server technology. Open source examples include Apache web server Tomcat and the JBoss application server.',NF
+8,'A database management system such as Oracle DB2 MySql or HSQL will need to be integrated with the product.',NF
+8,'The product’s Look and Feel shall be able to incorporate aspects of the customer’s organization such as logo branding and identity',NF
+8,'The product shall have a conservative and professional appearance.',NF
+8,'The product shall make the users want to use it. 80% of the users surveyed report they are regularly using the product after the first 2 weeks post-launch.',NF
+8,'The product shall be easy to use. 90% of users will be able to successfully reserve a conference room within 5 minutes of product use.',NF
+8,'The product shall give users feedback when necessary. 80% of the users surveyed report that the product accurately confirms their actions.',NF
+8,'The product shall allow the user to select a chosen language from one of the target market countries.',NF
+8,'The product shall allow for customization of start page and views preferences.',NF
+8,'An employee will be able to successfully use the product within a few minutes. After informally navigating the product for less than 15 minutes users shall be able to successfully setup meetings and reserve conference rooms.',NF
+8,'The product shall use a standard navigation menu familiar to most web users.',NF
+8,'The product shall allow for intuitive searching of available conference rooms.',NF
+8,'The product shall conform to the Americans with Disabilities Act.',NF
+8,'The response shall be fast enough to avoid interrupting the user’s flow of thought. 90% of tasks shall complete within 5 seconds. 98% of tasks shall complete within 8 seconds.',NF
+8,'Aside from server failure the software product shall achieve 99.99% up time.',NF
+8,'The product shall create an exception log of problems encountered within the product for transmission to our company for analysis and resolution.',NF
+8,'The product shall be capable of handling up to 1 000 concurrent requests. This number will increase to 2 000 by Release 2. The concurrency capacity must be able to handle peak scheduling times such as early morning and late afternoon hours.',NF
+8,'The product shall be able to process 10 000 transactions per hour within two years of its launch. This number will increase to 20 000 by Release 2.',NF
+8,'The product shall be expected to operate for at least 5 years for each customer installation.',NF
+8,'The product shall be used in office environments.',NF
+8,'The product must be able to interface with any HTML browser. The product shall transmit data between the user and the product without problems. The product shall display HTML properly in 80% of all HTML browsers tested (minimum is to test 8 browsers).',NF
+8,'The product must be able to interface with various database management systems. The product shall communicate successfully with the database management system on 100% of all transactions.',NF
+8,'The product must be able to interface with various email servers. The product shall be able to send email.',NF
+8,'The product shall be available for distribution via the Internet as a binary or ZIP file.',NF
+8,'The product shall be available for distribution as a packaged CD.',NF
+8,'The product will be available for licensing as a one-server two-five servers or five-or-more servers license.',NF
+8,'A new user must be able to be added to the system within 10 minutes. 90% of new users are able to log into the system within 10 minutes.',NF
+8,'The product must be designed using Design Patterns and coding best practices. 90% of maintenance software developers are able to integrate new functionality into the product with 2 working days.',NF
+8,'The product must be highly configurable for use with various database management systems for the end users. 80% of end users are able to integrate new database management systems with the product without changing the product’s software code.',NF
+8,'Maintenance releases will be offered to customers once a year. The releases shall take no longer than 5 minutes for 80% of the customer base to install.',NF
+8,'Every registered user will have access to the product’s support site via the Internet. 70% of registered users shall find a solution to their problem within 5 minutes of using the support site.',NF
+8,'The customer shall be able to easily integrate new building maps with the product throughout the product’s lifecycle. Integration of new maps with the product shall be possible with little to no support from product support staff.',NF
+8,'The product shall be translated into foreign languages other than the target market countries’ languages in future releases. For each emerging target market it shall take no more than 5 days to configure the product for that market’s language.',NF
+8,'The product is expected to integrate with multiple database management systems. The product will operate with Oracle SQL Server DB2 MySQL HSQL and MS Access.',NF
+8,'The product shall be able to be installed in any operating environment within 2 days.',NF
+8,'The product shall ensure that only company employees or external users with company-approved user IDs may have product access. 100% of all logons shall be by either company employees or external users with company-approved user IDs.',NF
+8,'Only managers are able to perform search queries for reservations by user. 100% of all search queries for reservations by user shall be from logons of only management logons.',NF
+8,'The product shall ensure that the database’s data corresponds to the data entered by the user. Each conference room reservation in the system will contain the same information as was entered by the user.',NF
+8,'The product shall prevent the input of malicious data. The product and/or adjacent hardware/software systems’ data shall remain 100% uncorrupted each time malicious data is input into the product.',NF
+8,'The product and/or dependent databases/filesystems shall remain operational as a result of the input of malicious data. The product and/or dependent databases/filesystems shall not crash 100% of the time that malicious data is input into the product.',NF
+8,'The product shall have the ability to receive automatic software updates as new threats emerge. 100% of customers will be able to receive automatic software updates transmitted to the installed product.',NF
+8,'The language of the product shall accommodate all of the target market countries. 90% of survey respondents from each target market country will find that the language of the product is acceptable.',NF
+8,'The product shall be able to display calendar dates and times according to the user’s locale. 90% of survey respondents from each target market country will find that the date and time formatting of the product is correct.',NF
+8,'The product must be developed with the J2SE/J2EE programming language libraries',NF
+8,'The product shall record meeting entries.',F
+8,'The product will notify employees of meeting invitations.',F
+8,'The product shall have the ability to send meeting reminders to employees.',F
+8,'The product shall assign the organizers contact information to each meeting they create.',F
+8,'The product will record meeting acknowledgements.',F
+8,'The product shall store new conference rooms.',F
+8,'The product shall update existing conference rooms.',F
+8,'The product will be able to delete conference rooms.',F
+8,'The product shall be able to store new room equipment.',F
+8,'The product will update existing room equipment.',F
+8,'The product shall be able to delete room equipment.',F
+8,'The product shall allow an organizer to invite other employees to meetings.',F
+8,'Each time a conference room is reserved the conference room schedule shall be updated to reflect the time and date of the reservation.',F
+8,'The product shall record the transportation status of equipment reserved.',F
+8,'The product shall display a map of the company building showing conference room locations.',F
+8,'The product shall record updated meeting agendas.',F
+8,'The product shall send a meeting confirmation to the meeting organizer.',F
+8,'The product shall display room equipment according to search parameters.',F
+8,'The product shall display conference rooms according to search parameters.',F
+8,'The product shall record different meeting types.',F
+8,'The product shall record all the equipment that has been reserved.',F
+8,'The product shall notify building personnel of equipment transport requests.',F
+8,'The product will allow priviledged users to view meeting schedules in multiple reporting views.',F
+8,'The product shall be able to send meeting notifications via different kinds of end-user specified methods.',F
+8,'The product shall have a customizable Look and Feel.',F
+8,'The product shall have an intuitive user interface.',F
+8,'The product will display an available status for unreserved conference rooms.',F
+9,'Recreation of Inventory Quantity Adjustment for the period of previous 30 days shall take no more than 30min.',NF
+9,'The System shall allow for a minimum of 6 users to work at the same time.',NF
+9,'The System shall utilize currently owned computer equipment.',NF
+9,'The System shall be able to automatically backup business data and restore them on demand.',NF
+9,'The System shall maintain consistent security. Any changes in user passwords and/or permissions should take affect in all parts of the System.',NF
+9,'The System shall granularly control access rights to all major subsystems. It should be possible to assign access rights to all subsystems independently.',NF
+9,'The System shall meet all applicable accounting standards. The final version of the System must successfully pass independent audit performed by a certified auditor.',NF
+9,'The System shall not require additional third party licenses resulting in royalty fees.',NF
+9,'The System shall allow generation of Inventory Quantity Adjustment documents on demand.',F
+9,'The System shall allow on demand generation of all Inventory Quantity Adjustment documents since certain point of time.',F
+9,'The IQA subsystem shall take into account current inventory status and adjust inventory of substitutionary ingredients accordingly.',F
+9,'The System shall allow entering storing and modifying product formulas.',F
+9,'Product formulas shall allow use of semi-products which have own formulas.',F
+9,'Product formula ingredients shall allow defining substitutionary ingredients.',F
+9,'Product formula substitutionary ingredients shall be entered automatically by the PFE subsystem.',F
+9,'Formula substitutionary ingredients shall be kept in persisted order',F
+9,'Product shall allow entering storing and modifying product menus used by POS terminals.',F
+9,'PME Subsystem shall allow building product menus based on the list of products kept in the accounting system.',F
+9,'PME Subsystem shall allow keeping submenus within menus and products within submenus in a managed and persisted order.',F
+9,'PME Subsystem shall allow for a product to exist in more than one submenu',F
+9,'The RMS System shall have Windows XP look and feel and use GUI futures making its use intuitive.',F
+9,'The System shall generate Inventory Quantity Adjustment document based on product daily sales data and product formulas.',F
+9,'The System shall generate Inventory Quantity Adjustment document automatically when daily Product Sales data is available.',F
+10,'Administrator shall be able to activate a pre-paid card via the Administration section in under 5 seconds.',NF
+10,'Customer shall be able to check the status of their prepaid card by entering in the PIN number in under 5 seconds.',NF
+10,'System shall let customers register on the website as a “pay as you go” user in under 5 minutes.',NF
+10,'System shall let customers register on the website as a “unlimited movie subscriber” user in under 10 minutes.',NF
+10,'System shall let existing customers log into the website with their email address and password in under 5 seconds.',NF
+10,'System shall let customers cancel their account process shall take no longer than 2 minutes. Database will mark the account as inactive and user will not be able to log into the website.',NF
+10,'System shall let administrator de-activate a customer account in under 1 minute. Customer will no longer be able to access the website.',NF
+10,'System shall let administrator add/remove movies on the website in under 5 minutes. Entered movie information will be stored in the database and will now be available on the website.',NF
+10,'System shall let the administrator add/remove categories on the website in under 5 minutes.',NF
+10,'System shall let Izogn Manager access sales and usage statistics in under 2 minutes.',NF
+10,'System shall let administrators generate unique pre-paid pins in under 2 minutes and generate an Excel file with the generated PINs.',NF
+10,'The website shall be attractive to all audiences. The website shall appear to be fun and the colors should be bright and vibrant.',NF
+10,'The website should have an African feel but should not alienate non-Africans. The website should use animation on pages which are describing the services to grab the users attention and encourage them to sign up.',NF
+10,'The website design should be modern clean and concise.',NF
+10,'The product should be able to be used by 90% of novice users on the Internet.',NF
+10,'Users should only have to navigate through a maximum of 4 pages to create an account with the website.',NF
+10,'Users should be able to access their streaming movies in under 2 clicks after logging into the website.',NF
+10,'An anonymous survey will show that 70% of customers are comfortable purchasing streaming movies after 2 weeks using the website.',NF
+10,'An anonymous survey will show that 95% of customers are comfortable using and purchasing pre-paid cards after a month of using the system.',NF
+10,'The product shall retain the customer’s buying preferences and information.',NF
+10,'The product shall be easy for customers with novice skills on the Internet to purchase and watch streaming movies. Customers should be able to purchase and watch a pre-determined movie in under 3 minutes.',NF
+10,'The product shall use symbols and words that are naturally understandable by users familiar with websites',NF
+10,'The website will use standard Internet conventions when interacting with the user.',NF
+10,'Any interface between a user and the automated system shall have a maximum response time of 5 seconds unless noted by an exception below.',NF
+10,'When purchasing a streaming movie or pre-paid card via credit card the processing time should have a maximum response time of 15 seconds.',NF
+10,'When streaming a movie the buffering time should take no longer than 10 seconds (plus any latency on the user’s connection.)',NF
+10,'While streaming a movie buffering should only occur if there is latency in the user’s connection.',NF
+10,'All credit card information will be secured on the server and only accessible by authorized Izogn administrators. Information will be encrypted in the database.',NF
+10,'The website shall be available for use 24 hours per day 365 days per year.',NF
+10,'The website shall achieve 99.5% up time.',NF
+10,'All movies shall be streamed on demand at any time of the day.',NF
+10,'The website shall continue to operate if the streaming server goes down.',NF
+10,'The website shall continue to operate if the payment gateway goes down.',NF
+10,'The streaming server will support 50 simultaneous streaming connections.',NF
+10,'The streaming server will support a maximum of 700 movies; new servers can be added to support more movies.',NF
+10,'The server will support a maximum of 1 000 simultaneous users.',NF
+10,'The website shall be capable of supporting 100 000 customers.',NF
+10,'The product shall be expected to operate within the maximum maintenance budget for a minimum of 2 years.',NF
+10,'All aspects of the website shall be accessed by a web browser over the Internet.',NF
+10,'The same hardware supporting the current website will be used to support the new system.',NF
+10,'We must be able to interface with the following browsers: IE 5.X 6.0 Netscape 6.x 7.x 8.x and Firefox 1.0.',NF
+10,'Website must interface with the CyberSource API to process credit card transactions.',NF
+10,'Website must be fully operational with MSN TV2.',NF
+10,'Movies shall be encoded and streamed via Windows Media Player 9.0.',NF
+10,'Movies shall be encoded for 56k and 256k streams.',NF
+10,'Promotional updates to the website should take a day to update.',NF
+10,'Izogn Administrator must be able to update the category listings on the website within 2 minutes.',NF
+10,'Izogn Administrator must be able to add new products to the website within 2 minutes.',NF
+10,'The system will provide a 24 hour 800 toll free number for support to its customers.',NF
+10,'The website will provide a help section with answers and solutions to common problems.',NF
+10,'Velkat staff will be available for phone support between 7am-7pm M-F to provide technical support to the Izogn administrators.',NF
+10,'The product shall be able to be installed in the specified environment within 1 working day.',NF
+10,'Only registered customers can purchase streaming movies.',NF
+10,'A customer can only stream a movie if they purchased it and are within the 2 day viewing period.',NF
+10,'Only authorized personnel can access customer records in the database.',NF
+10,'Only administrators can activate a pre-paid card.',NF
+10,'Only authorized personnel can access sales information.',NF
+10,'The website shall prevent its data from being corrupted when incorrect data is entered in.',NF
+10,'The website shall protect itself from intentional abuse and notify the administrator at all occurrences.',NF
+10,'Data integrity scripts will be run on a weekly basis to verify the integrity of the database.',NF
+10,'The website shall make its user aware of its information practices before collection data from them via a Privacy Policy accessible on all pages of the website.',NF
+10,'The system shall notify customers of changes to its information policy.',NF
+10,'The system shall reveal private information only in compliance with the organization’s information policy.',NF
+10,'All customer information will be stored on a secure database accessible only to authorized personnel.',NF
+10,'All credit card information will be encrypted in the database.',NF
+10,'The streaming server will have anti-virus software to prevent infection of malicious viruses.',NF
+10,'The website should cater to all tribes in Nigeria.',NF
+10,'The website shall not be offensive to religious or ethnic groups.',NF
+10,'The website should appeal to all Africans not only Nigerians.',NF
+10,'The website should use Flash to provide animation on the home page.',NF
+10,'IzognMovies shall meet the licensing requirements set forth by the appropriate organizations in order to stream African movies.',NF
+10,'The website will comply with W3C standards.',NF
+10,'The PHP code will comply with PEAR standards.',NF
+10,'The website will allow customers to search for movies by title actor or director.',F
+10,'viewing a movie details the website will display the movies description actor and director entered in by the administrator.',F
+10,'Website shall request and authorize credit card payment before allowing a user to stream a movie.',F
+10,'shall be able to stream purchased movie via Windows Media Player for up to 2 days aftere purchase date.',F
+10,'Website shall allow customers to browse movies by categories entered in by izogn administrator.',F
+10,'Website shall allow customers to view reviews of selected movies by other customers.',F
+10,'Website shall allow customers to add their own movie review for a selected movie.',F
+10,'Website shall allow the Izogn administrator to approve a review posted by a customer.',F
+10,'System will allow customers to pay for a streaming movie with a pre-paid card.',F
+10,'Website shall allow customers to purchase pre-paid cards of $5 $10 or $20 value either by credit card or mail-in payment option.',F
+10,'System shall automatically update the main page of the website every Friday and show the 4 latest movies that have been added to the website.',F
+10,'System shall allow users to update their billing and contact information via the “My Account” section of the website.',F
+10,'Pre-paid cards shall be distributed via email or via a printed paper card.',F
+10,'Only registered customers can purchase streaming movies.',F
+10,'Movies can only be streamed if the customer has purchased a movie and is within the 2-day time period to stream the movie.',F
+10,'Website must be able to support free trial periods with various parameters set by the Izogn Manager.',F
+10,'All streaming movie sales will be logged in the database and accessible by the administrator.',F
+10,'All registered customer information shall be stored and maintained in the database even after the customer cancels their account.',F
+10,'Daily usage statistics should be logged and accessible by the administrator.',F
+10,'The owner shall have free access to all of the streaming movies.',F
+11,'Total lead cycle time must be completed in 5 minutes for 90% of lead volume between the business hours of 8AM CST to 8PM CST; then 3 minutes for 99% of lead volume during off business hours.',NF
+11,'No lead evaluation will complete in a time period longer than 25 seconds for 97% of all leads processed.',NF
+11,'For leads that process longer than 25 seconds the system will record the event and duration',NF
+11,'The process must fit within the processing time conditions set forth by the Auto Rep Assignment process in which a lead is assigned within 3 minutes of the total life cycle.',NF
+11,'The lead washing process will operate within the established physical web service structure.',NF
+11,'The washing process must use a non binding neutral data format such as xml when receiving and processing lead data.',NF
+11,'Defect reports will be available to technical units on a 24x7 basis.',NF
+11,'Washing parameters will be updated during scheduled maintenance hours.',NF
+11,'The vendor will verify the invalid lead.',F
+11,'Vendor will submit a credit validation record to be applied to the enterprise billing system.',F
+11,'If a lead is scored to the high range the system will supply the lead data and score to the enterprise system.',F
+11,'The leads washing functionality will validate all leads received by the web service for valid data',F
+11,'The leads washing functionality will insert all leads captured by the web service.',F
+11,'If the leads score falls within the high average score then it will be process by the ARA functionality.',F
+11,'If the leads score falls within the medium average then it will be set for manual verification by an Enrollment Coordinator through the eleads system.',F
+11,'If the leads score falls within the low average then it will be returned to the supplying vendor',F
+11,'The leads washing functionality will compile both contact and academic scoring information for a total score.',F
+11,'The leads washing functionality will use the parameters supplied by corporate and schools to score part of the lead.',F
+11,'The leads washing functionality will return the lead data supplied to the vendor along with the reason of rejection.',F
+11,'The leads washing functionality will have an interface in which lead data parameters can be maintained.',F
+11,'The leads washing functionality will verify the users authentication and rights to make parameter updates.',F
+11,'The leads washing functionality will store any potential lead duplicates returned by the enterprise system.',F
+11,'Prior to submitting the lead to the enterprise system the leads washing functionality will assign the lead to an admissions rep.',F
+11,'The leads washing functionality shall receive a period list of available reps from the enterprise system.',F
+12,'The product shall simulate the look of ships at sea.',NF
+12,'The product shall display the grids within a circle as a view from a periscope.',NF
+12,'The product shall display each type of ship in a grid using an image of the specific type of ship.',NF
+12,'When the offensive player takes a shot the product shall simulate the sound of a ship at sea.',NF
+12,'When a shot is marked as a miss the product shall simulate the sound of a shot missing its target.',NF
+12,'When a shot is marked as a hit the product shall simulate the sound of a shot hitting its target.',NF
+12,'When a ship is sunk the product shall simulate the sound of a sinking ship.',NF
+12,'The product shall be available 24 hours per day seven days per week.',NF
+12,'The product shall able to handle a large number of games simultaneously.',NF
+12,'The response time shall be fast enough to maintain the flow of the game. The response time shall be no more than 2 seconds for 95% of responses and no more than 4% for the remaining responses.',NF
+12,'The product shall protect the identity of the players. The product shall provide players no access to information that might reveal the identity of another player.',NF
+12,'The product shall be intuitive and self-explanatory. Nine out ten users shall be able to successfully complete a game with no training.',NF
+12,'The product shall be available to players who understand English Spanish and French. The product shall allow the user to select the language upon accessing the product.',NF
+12,'The product shall provide players no access to information that might reveal the identity of another player',NF
+12,'The response time shall be fast enough to maintain the flow of the game. The response time shall be no more than 2 seconds for 95% of responses and no more than 4% for the remaining responses.',NF
+12,'The product shall maintain a list of players.',F
+12,'The product shall allow a user to identify himself or herself as a player.',F
+12,'Once a game has been initiated the product shall make the players assigned to the game unavailable for selection from the list of players.',F
+12,'The product shall allow a user to remove himself or herself from the list of players at any time.',F
+12,'The product shall make inactive players unavailable for selection from the list of players.',F
+12,'The product shall remove players who have been inactive for 24 hours from the list of players.',F
+12,'The product shall allow a player to initiate a game by selecting another available player from the list of players.',F
+12,'Once a game is initiated the product shall display a defensive grid to each player',F
+12,'Once a game is initiated the product shall display an offensive grid to each player.',F
+12,'The product shall prevent a player from viewing the offensive or defensive grids of the other player.',F
+12,'Once a game is initiated the product shall allow each player to position their 5 ships on their respective defensive grids.',F
+12,'The product shall allow a player to position ships horizontally on their grid.',F
+12,'The product shall allow the player to position ships vertically on their grid.',F
+12,'The product shall allow the player to position ships diagonally on their grid',F
+12,'The product shall prevent the player from overlapping ships on their grid.',F
+12,'When both players have positioned their 5 ships on their defensive grids the product shall define the status of each player for the first turn.',F
+12,'For each turn the product shall identify one player as offensive status and one player as defensive status.',F
+12,'The product shall maintain the status of each player for a turn either offensive or defensive.',F
+12,'At the start of each turn the product shall notify each player of his or her status.',F
+12,'For each turn the product shall allow the offensive player to define a shot.',F
+12,'For each shot the product shall examine the defensive grid of the defensive player to determine whether the shot was a hit or miss.',F
+12,'For each shot the product shall notify the players whether the shot was a hit or miss.',F
+12,'For each shot the product shall mark the shot as a hit or miss on the defensive grid of the defensive player.',F
+12,'For each shot the product shall mark the shot as a hit or miss on the offensive grid of the offensive player.',F
+12,'When the hit results in sinking a ship the product shall notify the players that the ship was sunk.',F
+12,'When the hit results in sinking a ship the product shall mark the ship as sunk on the defensive grid of the defensive player.',F
+12,'When the hit results in sinking a ship the product shall indicate the type of ship sunk on the defensive grid of the defensive player.',F
+12,'When the hit results in sinking a ship the product shall mark the ship as sunk on the offensive grid of the offensive player.',F
+12,'If the shot was marked as a hit the product shall allow the offensive player to define a shot.',F
+12,'If the shot was marked as a miss the product shall change the status of the offensive player to defensive',F
+12,'If the shot was marked as a miss the product shall change the status of the defensive player to offensive',F
+12,'The product shall continue to assign turns until the game is ended.',F
+12,'The product shall end a game when a hit by the offensive player results in sinking the last of the defensive player’s ships which had not been previously marked as sunk.',F
+12,'The product shall allow a player to end a game at any time during the game.',F
+12,'When a game is ended the product shall notify the players that the game is ended.',F
+12,'The notification of the game ending will include the reason the game is ended (i.e. a player has won the game or a player has ended the game).',F
+12,'When a game is ended the product shall allow each player to identify himself or herself as an available player in the list of players.',F
+12,'When a game is ended the product shall allow each player to remove himself or herself from the list of players.',F
+13,The system shall be easy to use by callers and supervisors. Callers and supervisors must be able to accomplish any system task within 2 minutes.',NF
+13,The system shall be easy to learn by callers and supervisors. Callers and supervisors shall learn how to use the system within 10 minutes.',NF
+13,The system shall be responsive. At the DePaul TeleServices Center when a supervisor uses the system to view a callers schedule the system response time must be no more than 2 seconds 90% of the time and no more than 5 seconds the rest of the time.',NF
+13,On a 56k connection the system response time for all operations must be no more than 6 seconds 90% of the time.',NF
+13,On a 112k connection or faster the system response time for all operations must be no more than 3 seconds 90% of the time.',NF
+13,The system shall have high availability every day of the year.The system must be available for use between 12:00AM and 6:00PM all days of the year.',NF
+13,The system must be available for use between 7:00AM and 11:59PM all days of the year.',NF
+13,The product shall be internet browser independent.The product must run using Internet Explorer and Netscape Navigator.',NF
+13,The product shall ensure that only supervisors can advertise empty time slots.The product must ensure that supervisors are allowed to access advertise empty time slots.',NF
+13,The product shall ensure that only supervisors can enter a caller’s schedule.The product must ensure that supervisors are allowed to access advertise empty time slots.',NF
+13,The product shall ensure that only supervisors can view schedule of all callers.The product must ensure that supervisors are allowed to access advertise empty time slots.',NF
+13,The interface shall have a simple look. In the interface and usability survey 90% of beta testers must report that the interface is adequately simple.',NF
+13,The interface shall be appealing to callers and supervisors. In the interface and usability survey 80% of beta testers must report that the interface is appealing.',NF
+14,'The product shall provide GUI based Monitoring Services.System Administrators shall monitor message exchanges will predict and determine problems and will also provide internal and external support.',NF
+14,'The product shall comply with City of Chicago Application Development Guide Framework.Application Development Framework will provide structured Graphical User Interface.',NF
+14,'The product shall provide Monitoring Services.The product shall be easy for System Administrators and DBAs to use after two weeks of usage.',NF
+14,'The product shall provide Error Tracking Services.The product shall help the System Administrators and DBAs to resolve transaction errors 99% of the time.',NF
+14,'The product shall provide Portals.The product shall help System Administrators to analyze the transactions with ad-hoc reporting and KPIs (Key Performance Indicators)',NF
+14,'The product shall provide Asynchronous Messaging.The product shall provide asynchronous messaging to enable parallel processing and reduce the overhead in communications',NF
+14,'The product shall provide Multi-threading and Load Balancing.The product shall provide multi-threading technology as well as load balancing to overcome data load spikes and traffic.',NF
+14,'The product shall process messages within 2 seconds.The product shall have a maximum message processing time of 2 seconds',NF
+14,'The product shall poll the system for messages every second.The product shall poll the system for new messages at a maximum of every 1 second.',NF
+14,'The product shall provide Dynamic Change Support and Transparent resource addition.The product shall support Transparent Resource addition and Dynamic Change support to provide scalability and avoid service interruptions of more than 1 day.',NF
+14,'The product shall be available 99% of the time. Rationale: To avoid service interruption during busiest customer service response periods. The product shall be available 99.99% of the time for regular business days.',NF
+14,'The product shall be robust.The product shall have fault avoidance based on standards adoption.',NF
+14,'The product shall be robust with fault tolerance.The product shall have fault tolerance by using recovery technique compensatory transaction and routing around failures.',NF
+14,'The product shall be able to process all transactions.The product shall process minimum of 1 million transactions per year.',NF
+14,'The product shall be platform independent.The product shall enable access to any type of development environment and platform.',NF
+14,'The product shall interface CSR and Datastream.The product shall exchange messages between CSR and EAM on a real time basis without any direct interfaces between two systems.',NF
+14,': The product shall continue to operate during upgrade change or new resource addition.The product shall be able to continue to operate with no interruption in service due to new resource additions.',NF
+14,'The product shall be updated on a regular basis.The product will have a new major feature introduced every six months and quarterly maintenance releases every six months.',NF
+14,'The product shall operate with every platform.The product shall accommodate any new technology without any change in its architecture.',NF
+14,'The product shall have security.The product shall provide authentication and authorization.',NF
+14,'The product shall information Security. The product shall enable privacy by encryption WS-Security and Integrity Checking.',NF
+14,'The product shall have audit capabilities.The product shall store messages for a minimum of one year for audit and transaction tracking purposes.',NF
+15,'The system shall use IBM and CCR branding standards. The interface must have one IBM logo and one CCR logo.',NF
+15,'The system shall be displayable on any work computer a CCR user may have. The system interface shall be formatted to display at 800 by 600 pixel resolution.',NF
+15,'The system interface will use CCR nomenclature. The system must use the same nomenclature used in the existing WCS system and reports',NF
+15,'The interface must summarize the data in a fashion that’s appealing to CCR management. Every report type must have at least one high level summary shown in the results dashboard/interface',NF
+15,'The system must use a point and click interface. 100% of all selection and navigation functionality must be able to be activated/selected by either a mouse or a keyboard',NF
+15,'The interface shall be easy to use. 90% of users should be able to successfully use the system to generate a report on their first use. The interface should adhere to IBM usability standards.',NF
+15,'Rreports must be easy to generate. eports must be generated within one button click and exported within one button click (after selecting the report)',NF
+15,'A user shall be able to use the system without instruction after a short amount of time. After one use a user should understand and remember 90% of the system usage and navigation.',NF
+15,'All CCR users shall receive training before the WCS system is deployed. One training session will be held for 100% of CCR users before system deployment (based on a CCR user being available)',NF
+15,'The WCS system shall use appropriate nomenclature and terminology as defined by the Corporate Community Grants organization. All interfaces and reports will undergo usability tests by CCR users.',NF
+15,'The WCS system shall be available at all times as long as IBM’s internal intranet W3 is accessible. The WCS system will be available 95% of the time IBM’s internal intranet W3 is available.',NF
+15,'The WCS system shall have the ability to connect other designated WCS databases currently not included in the system.',NF
+15,'The WCS system shall have the ability to include data for regions outside the United States and be accessed by users outside of the United States if approved by CCR management.',NF
+15,'The WCS system shall be run in a Windows environment. The WCS shall be accessed by users through the Internet on an IBM computer running a Windows 2000 or above operating system.',NF
+15,'The Brio portion of the WCS system must be able to export files in spreadsheet form (Microsoft Excel and Lotus 1-2-3 formats). Brio will provide buttons in the user interface that produce/export reports in .xls or .123 file formats.',NF
+15,'The WCS system must run queries to the WCS databases once again (on a specified day) to update the available data available to CCR users. Queries must be made to external databases for data refresh once a week.',NF
+15,'All changes updates and additions to the WCS system shall be updated in the WCS Developer and WCS User Guides. Every change must be reflected in WCS system documentation',NF
+15,'The system shall only be accessed by authorized Corporate Community Grants (CCR) employees. Users must be authenticated using their IBM intranet user name and password.',NF
+15,'The WCS system shall not allow automatic logins by any user. Cookies containing WCS login information about a user will not be stored on a user’s computer.',NF
+16,'Each team owner will need to use a username and password in order to be authenticated to reach the team owner’s page',NF
+16,'The Commissioner will be the only authorized user per league to adjust league settings.',NF
+16,'Each page shall contain a navigation menu which shows the index into which the current page is contained.',NF
+16,'Each page shall contain a similar format with action items in one location and navigation buttons in a different location.',NF
+16,'The message board shall contain the 5 most recently posted messages on the league page. The messages will contain up to the first 150 characters of the message.',NF
+16,'A new user shall be able to navigate through the league and team pages within 30 seconds of reaching the start-up page.',NF
+16,'Users shall be able to reach the ‘add’ ‘drop’ and ‘trade player’ pages with one click from the team owner’s page.',NF
+16,'Users shall be able to view at least 25 NFL player statistics and points on each page.',NF
+16,'The application shall ask the user to confirm dropping a player or trading a player before performing the action.',NF
+16,'The application shall be able to complete every user transaction within one fourth of a second of receiving the request over the network.',NF
+16,'The application shall have a downtime of at most 10 minutes per year.',NF
+16,'The application shall run on a web application server.',NF
+16,'A primary database will be used to store cached data for active users.',NF
+16,'A secondary database will be used to store historical statistics and data.',NF
+16,'Application updates shall occur between 3AM and 6 AM CST on Wednesday morning during the middle of the NFL season.',NF
+16,'New System version releases shall be released at the beginning of each NFL season.',NF
+17,'The RFS system should be available 24/7 especially during the budgeting period. The RFS system shall be available 90% of the time all year and 98% during the budgeting period. 2% of the time the system will become available within 1 hour of the time that the situation is reported.',NF
+17,'98% of the user workstations shall meet the minimum hardware requirements prior to implementation. Minimum Hard Disk Space: 400MB.',NF
+17,'98% of the user workstations shall meet the minimum software requirements prior to implementation: Microsoft Internet Explorer 5.0. Microsoft .NET Framework 1.1. Microsoft Internet Explorer Web Controls',NF
+17,'The RFS system should be able to easily interface with the BDW environment in order to load the data. • 7 data files shall be received from the BDW and loaded into the RFS system within 3 hours one day prior to the start of budgeting process every year. The data will be as of October month-end. Test files (7) shall be loaded up to 5 times throughout the year from the BDW.',NF
+17,'Changes to revenue and expense formulae must be applied to the RFS system every year prior to the budgeting process start. Revenue and expense formulae will be updated within one week of their receipt after which 2 weeks will be allotted to testing of the budget calculations to be conducted jointly by the project development team and PCG Finance.',NF
+17,'New branches/complexes/districts/regions and revenue/expense accounts added to the BDW must be reflected in the RFS system. 100% of the entities (mentioned above) available as of October month-end will be loaded into the RFS system prior to the budget start process.',NF
+17,'Only authorized user shall access the RFS system. ONLY users that exist in the UAS system with the RFS system assigned to their role(s) shall access the RFS system and use it.',NF
+17,'User access should be limited to the permissions granted to their role(s) Each level in the PCG hierarchy will be assigned a role and users will be assigned to these roles. Access to functionality within RFS system is dependent on the privileges/permission assigned to the role..',NF
+17,'The product must comply with the intranet page standards and requirements of ENET Securities. 95% of the product look & feel will be approved by the Architecture group prior to implementation. The remaining 5% will be corrected and approved within one month of product release.',NF
+17,'The intranet pages should display appropriately in all resolutions from 800x600 and higher. The display of all the pages will be correct in 95% of the resolutions prior to implementation. The remaining 5% will be corrected within a week of notification of the incorrect display.',NF
+17,'The users should be able to easily use the system to successfully complete their budgets within the stipulated time for completion. With a week of training prior to product implementation 98% of the users shall complete their budgets within the stipulated time.',NF
+17,'The product interface should be fast. The response time of the product interface should not exceed 2 seconds 90% of the time. For 10% of the time the response time should not be more than 10 seconds.not be more than 10 seconds.',NF
+18,"User shall be able to use the application on Windows, Linux and OSX.",NF
+18,User shall be able to use the application without installation of any additional SW except the web browser,NF
+18,ReqView shall use REST API to download / upload a requirements document from / to Google Drive web service,F
+18,The data exchange via Internet shall be done via encrypted https protocol,NF
+18,User shall be able to create a new empty document,F
+18,User shall be able to save the current document containing unsaved changes when creating a new document,F
+18,User shall be able to open a document file stored on a local user's drive,F
+18,User shall be able to save the current document containing unsaved changes when opening another document,F
+18,User shall be able to save modified document as a file stored on user's local drive,F
+18,User shall be able to save the current ReqView document as a template file stored on user's local drive,F
+18,"The template file shall contain information about document structure, definition of custom attributes and traceability definition",F
+18,User shall be able to create a new document using a predefined or custom template,F
+18,User shall be able to encrypt saved file by a strong industry standard encryption and with a user defined password,F
+18,User shall be able to authorize ReqView with his Google Drive,F
+18,User shall be able to open a document stored on user's Google Drive by providing its name,F
+18,User shall be able to save the current document to user's Google Drive providing its name and password for encryption,F
+18,User shall be able to upload a new version of a document opened from user's Google drive,F
+18,User shall be able to import a structured requirements document from MS Word,F
+18,User shall be able to import a table from MS Excel,F
+18,User shall be able to export document to PDF with the same layout as displayed in the Requirements Table,F
+18,User shall be able to export ReqView document to HTML using a custom template,F
+18,User shall be able to export ReqView document to MS Word,F
+18,User shall be able to show and hide Table of Contents (TOC) containing overall document structure visualized as a tree,F
+18,User shall be able to navigate in the document by clicking at TOC sections,F
+18,"User shall be able to review requirements organized into a table containing at Requirement ID, Requirement Description, Discussion, Links and custom requirement attribute columns",F
+18,ID column shall contain a unique identifier,F
+18,"Description column shall contain the section number, heading, requirement text and requirement attachments",F
+18,"Discussion column shall visualize comments related to the requirement. Each comment shall contain its author, date and text",F
+18,Links column shall contain list of incoming and outgoing links grouped by link type.,F
+18,User shall be able to change width of each column in the Requirements Table,F
+18,User shall be able to show / hide each Requirements Table column except ID and Description columns,F
+18,User shall be able to sort all columns of the Requirements Table except Discussion and Links column by ascending or descending order. Description column shall be sorted only ascending by document hierarchy order.,F
+18,User shall be able to display and hide Attributes Panel containing list of custom attributes of the selected requirement in the Requirements Table,F
+18,User shall be able to display and hide Discussion Panel containing all comments for the selected requirement in the Requirement Table.,F
+18,Comments in the discussion shall be sorted by date in ascending order,F
+18,"Each comment shall display date, author and the comment description",F
+18,User shall be able to expand and collapse all comments in Discussion panel.,F
+18,User shall be able to display and hide Links panel containing list of all incoming and outgoing links related to the selected requirement in the Requirements Table grouped by link types,F
+18,User shall be able to display and hide History panel containing all changes for a selected requirement in the Requirements Table,F
+18,User shall be able to expand and collapse all changes in the History Panel.,F
+18,"User shall be able to insert a new object before, after or as a child of a selected requirement",F
+18,"User shall be able to copy a selected object including its children before, after or as a child of another object",F
+18,"User shall be able to move selected objects including their children before, after or as child of another object",F
+18,User shall be able to mark a requirement including all its children as deleted.,F
+18,User shall be able to undelete a selected requirement including all its children,F
+18,User shall be able to permanently remove selected deleted requirements or all deleted requirements from document,F
+18,User shall be able to edit object heading,F
+18,"User shall be able to edit requirement text description using following rich text formatting: bold, italic, underline or strikethrough text; numbered list; bullet list; increase or decrease list indent; URL link",F
+18,User shall be able to define custom object attributes presented as extra columns in the Requirements Table,F
+18,"Each custom object attribute shall have one of following types: bool, int, real, string, date, enum, xhtml",NF
+18,Each custom object attribute can have a text field presented to the user as column heading,F
+18,Each custom object attribute can be set as read only in which case user shall be prevented of changing its value for any requirement,F
+18,User shall be able to add a new comment for the selected object in Requirements Table.,F
+18,"New comments shall be stored with the current date and time, and author contact details name, email and company (see User Settings).",F
+18,"User shall be able to attach to a selected requirement one or more images or documents (PDF, Word, Excel, Powerpoint, Visio, ...).",F
+18,"If a requirement has an attachment it shall be shown in the Requirements Table under requirement's text. Image attachments shall be displayed as embedded pictures, for other type of attachments at least file name shall be displayed.",F
+18,User shall be able to open chosen attached PDF document in the browser,F
+18,User shall be able to download chosen attached document to the local file system,F
+18,User shall be able to update the attachment,F
+18,User shall be able to delete any chosen attachment,F
+18,User shall be able to create a directed link between requirements in the same document,F
+18,User shall be able to create a directed link between objects in two different documents,F
+18,User shall be able to display column summarizing all incoming and outgoing links. Each link shall be presented by ID of the linked object and short summary of its description,F
+18,User shall be able to delete a selected link.,F
+18,User shall be able to follow link in order to navigate to the linked object,F
+18,User shall be able to filter all requirements by the given value of any attribute,F
+18,User shall be able to input up to 10 filtering criterions. Each criterion can be a text keyword or name of attribute with the matched value,F
+18,"Criterions can be connected into logical clauses using AND, OR and NOT operators",F
+18,User shall be able to filter only changed requirements from the version stored in the last opened ReqView document,F
+18,User shall be able to choose if he wants to present the found requirements with or without their structure (all parent section headings on all levels),F
+18,User shall be able to search requirements with an attribute matching a string keyword by means of the Full Text Search (FTS).,F
+18,The document words shall be matched if they have the same prefix as an input keyword without respecting the case,F
+18,User shall get visual information if requirements changed from the original version,F
+18,The application shall show change indicator for requirements changed from the version stored in the opened ReqView document,F
+18,Each change to any of requirement attributes shall be saved into History of Changes,F
+18,"ReqView shall track for each change information about change date, reviewer, changed attribute name and changed attribute original value and value after the modification",F
+18,User shall be able to clear the history of all requirements in the document,F
+18,User shall be able to print the current document,F
+18,User shall be able to export the printout to PDF,F
+18,The print layout shall have the same layout as the displayed Requirements Table including displayed columns and filtered rows,NF
+18,ReqView Desktop shall start in less than 10s. The very first time it shall start in less than 30s.,NF
+18,"User shall be able to work with documents up to 1000 objects, 100 file attachments and 100MB in size",NF
+18,Response time for common edit operations (change attributes and structure) shall be less than 1s.,NF
+18,Opening or saving a local file shall took less than 10s.,NF
+18,Scrolling requirements table shall be smooth with jerks shorter than 200ms,NF
+18,The application data shall be stored in a secure storage which is not accessible by other system or web applications,NF
+18,The application shall not send any project data to the internet (except upload of document to Google Drive by the user).,NF
+19,There should be an application that provides functionality for mobile users to propose and schedule meetings.,F
+19,The WASP platform must provide services that may be used by WASP applications in order to personalize content for a specific end-user based on his or her user profile.,F
+19,The WASP platform should provide services that may be used by WASP applications in order to personalize content for a group of end-users based on their user profiles.,F
+19,The WASP platform must provide services that may be used by a WASP application to charge the user for using one of his services.,F
+19,The WASP platform must allow end-users to provide profile and context information explicitly to applications or the platform.,F
+19,A user's profile must contain at least one charging point for a specific user.,NF
+19,A WASP application must be authorized by the end-user before charging his account.,NF
+19,The WASP platform shall provide functionality to find points of interest that match the user's explicit need and obey the restrictions following from the user's profile and current context.,F
+19,"The WASP platform must allow end-users to place triggers to be alerted automatically for a certain type of point of interests, based on his/her context.",F
+19,"The WASP platform must allow end-users to place triggers in the platform to be alerted automatically for a certain type of services and events, based on his/her context.",F
+19,The WASP platform shall provide functionality to search for other people registered in the platform.,F
+19,The WASP platform shall provide functionality to find services that match the user's explicit need and obey the restrictions following from the user's profile and current context. For the found services the WASP platform shall provide (links to) the service profiles.,F
+19,The WASP platform shall allow end-users to maintain a buddy list.,F
+19,The WASP platform shall provide functionality for end-users to communicate with their buddies.,F
+19,The WASP platform should be able to use several communication services offered by the 3G platform.,NF
+19,"The WASP platform shall be able to update status and location information of buddies in the user's buddy list based either on request of the user, after login into the WASP platform and at a regular interval.",F
+19,The WASP platform must allow end-users to set alerts in the platform on changes in the status and/or location of his buddies.,F
+19,"When changes are discovered in the status and/or location of a user's buddy, the WASP platform must sent out notifications according to the alerts set by the user",F
+19,A WASP application shall be able to setup a phone call connection using the 3G Platform via the WASP platform.,F
+19,"The WASP platform shall allow status information to be stored, updated, retrieved and deleted in the user's profile in the WASP platform if the user allows this.",F
+19,"The WASP platform shall allow end-users to give and remove Create, Read, Update, Delete (CRUD) access rights on parts of the user profile to other users, specific WASP applications and the 3G Platform.",F
+19,"The WASP platform shall allow other users, WASP applications and/or the 3G Platform to ask the end- user for access rights on parts of the user profile.",F
+19,The WASP platform must be able to collect profile and context information on the user from multiple sources.,F
+19,The WASP platform should allow end-users to delegate and remove the rights to give access to parts of the user profile to other users.,F
+19,The WASP platform shall provide functionality to retrieve the current location of the user.,F
+19,The WASP platform must be able to retrieve status information from the 3G Platform.,F
+19,The WASP platform must be able to retrieve location information from the 3G Platform.,F
+19,It must be possible for a WASP application to send out messages to users using the WASP platform.,F
+19,"A WASP application should be able to automatically adapt content and the presentation of functionality to the user's device, for which the WASP platform may offer some generic adaptation services.",F
+19,The WASP platform must be able to combine knowledge about the end-user (in terms of profile and context) and a specific information request into a search query on the service registry.,F
+19,The WASP platform must be able to draw a map of a given area.,F
+19,The WASP platform must be able to show the location of users on a map.,F
+19,The WASP platform must be able to show the location of various points of interests on a map.,F
+19,The WASP platform shall be able to obtain the geographic location of points of interests.,F
+19,The WASP platform must be able to display a route connecting two or more points on a map.,F
+19,The WASP platform should be able to provide the end-user with walking or driving instructions.,F
+19,"The WASP platform must be able to render all maps on small, mobile devices, as well as large, fixed terminals.",NF
+19,The platform must be able to access points of interests and services from a map.,F
+19,"The WASP platform should be able to calculate a route between two or more arbitrarily chosen points, avoiding traffic jams or construction works.",F
+19,"The WASP platform should have access to information about traffic jams and construction works, as well as suggested alternative routes.",F
+19,The WASP platform should be possible to determine the location of touristic attractions close to a calculated route.,F
+19,The WASP platform should be able to determine whether a traffic jam lies on a suggested route.,F
+19,The WASP platform must allow end-users to set an alert on an event.,F
+19,The WASP platform should allow the end-user to specify the notification type when setting an alert.,F
+19,The WASP platform must maintain a list of events the end-user can be notified about.,F
+19,The WASP platform must allow the end-user to remove previously set alerts on events.,F
+19,"The WASP platform must notify the end-user about the occurrence of an event for which an alert was set, as soon as the event occurs.",F
+19,The WASP platform should be able to decide how to notify the user of an alert for which an event was set.,F
+19,The WASP platform must actively monitor all events.,F
+19,"If the user cannot be notified of the event the first time, the WASP platform should retry to notify the user of the occurrence of the event, until the user has been notified or a specified time-out elapses.",F
+19,There must not be any application data on the end-user's device. Only terminal capabilities may be terminal dependent and those capabilities may be stored on the end-user's device.,NF
+19,The WASP platform must maintain authentication credentials per user.,F
+19,The WASP platform should be able to request the user's ID from the 3G platform.,F
+19,The WASP platform should have a (limited) number of classification schemes for POIs and services.,F
+19,The WASP platform must have a (web-based) form to specify simple POI and service profiles.,F
+19,The WASP platform should offer a tool that helps the 3rd party service provider to specify more complex profiles.,F
+19,The platform must be able to store POI and service profiles.,F
+19,The WASP platform must allow for users to have different roles.,F
+19,Profiles must have associated expiry dates. The registry must check for their existence and should enforce them. The registry may supply a default expiry date if none was specified.,F
+19,"Services must have associated schedule information (this service is available weekdays from 8:00 till 16:00), a service may be available 24/7. The registry must check for their existence, it may supply a default schedule if none was specified.",F
+19,"The WASP platform shall follow international standards as much as possible for web service description, invocation, and registries as well as for the profiles of users, points of interests and services, and internal standards should be developed such that they are flexible and easily extensible.",NF
+19,The WASP platform shall handle all requests in a best-effort manner.,NF

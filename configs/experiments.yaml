@@ -1,0 +1,23 @@
+# Replace input paths with files already in your GitHub repository.
+# Columns MUST be text and label (or override text_column / label_column).
+datasets:
+  T1: {path: data/dalpiaz.csv, text_column: text, label_column: label}
+  T2: {path: data/secreq.csv, text_column: text, label_column: label}
+  T3: {path: data/promise_nfr.csv, text_column: text, label_column: label, exclude_labels: [Portability]}
+  T4: {path: data/promise_nfr.csv, text_column: text, label_column: label, include_labels: [Usability, Security, Operational, Performance]}
+classifiers: [LR, GNB]
+embeddings: [tfidf, word2vec, sbert]
+strategies: [random, uncertainty, qbc, information_density, contrastive]
+seeds: [42, 43, 44, 45, 46, 47, 48, 49, 50, 51]
+protocol:
+  batch_size: 5
+  budget_fraction: 0.30
+  test_fraction: 0.20 # ASSUMPTION: paper does not specify split fraction
+  committee_size: 5 # ASSUMPTION: verify with original code
+  density_k: 10 # ASSUMPTION: verify with original code
+  contrastive_weight: 0.5 # ASSUMPTION: verify with original code
+  lr_max_iter: 1000
+models:
+  sbert: sentence-transformers/all-MiniLM-L6-v2 # ASSUMPTION: not named in paper
+  word2vec_path: models/GoogleNews-vectors-negative300.bin # Obtain separately; paper uses Google News 300d
+output_dir: outputs
